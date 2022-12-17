@@ -6,6 +6,7 @@ const {
   createTodo,
   getAllTodo,
   deleteTodo,
+  updateTodo,
 } = require("../controllers/todoControllers");
 
 /* Router method for for using the routers */
@@ -16,5 +17,6 @@ router.get("/", home);
 router.post("/createTodo", createTodo);
 router.get("/getAllTodo", getAllTodo);
 router.get("/deleteTodo/:id", deleteTodo);
+router.put("/updateTodo/:id", updateTodo);
 
 module.exports = router;

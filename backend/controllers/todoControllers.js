@@ -43,7 +43,22 @@ const getAllTodo = async (req, res) => {
   }
 };
 //updating all todo
-const updateTodo = () => {};
+const updateTodo = async (req, res) => {
+  try {
+    const todo = await Todo.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).json({
+      success: true,
+      message: "updated succesfully",
+      todo,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      success: true,
+      message: "Not updated erro occured",
+    });
+  }
+};
 //deleting the todo
 const deleteTodo = async (req, res) => {
   try {
@@ -59,4 +74,4 @@ const deleteTodo = async (req, res) => {
 };
 
 /* Exporting the module for using in routers */
-module.exports = { home, createTodo, getAllTodo, deleteTodo };
+module.exports = { home, createTodo, getAllTodo, deleteTodo, updateTodo };
